@@ -14,7 +14,7 @@ const Footer = () => {
               <span className="text-xl font-bold text-foreground">Property.com</span>
             </Link>
             <p className="text-muted-foreground mb-4 text-sm">
-              Pakistan's leading real estate platform connecting buyers, sellers, and renters 
+              India's leading real estate platform connecting buyers, sellers, and renters 
               with verified properties across major cities.
             </p>
             <div className="flex space-x-4">
@@ -70,28 +70,28 @@ const Footer = () => {
             <h3 className="font-semibold text-foreground mb-4">Popular Cities</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link to="/properties?city=karachi" className="text-muted-foreground hover:text-primary transition-colors">
-                  Properties in Karachi
+                <Link to="/properties?city=mumbai" className="text-muted-foreground hover:text-primary transition-colors">
+                  Properties in Mumbai
                 </Link>
               </li>
               <li>
-                <Link to="/properties?city=lahore" className="text-muted-foreground hover:text-primary transition-colors">
-                  Properties in Lahore
+                <Link to="/properties?city=delhi" className="text-muted-foreground hover:text-primary transition-colors">
+                  Properties in Delhi
                 </Link>
               </li>
               <li>
-                <Link to="/properties?city=islamabad" className="text-muted-foreground hover:text-primary transition-colors">
-                  Properties in Islamabad
+                <Link to="/properties?city=bangalore" className="text-muted-foreground hover:text-primary transition-colors">
+                  Properties in Bangalore
                 </Link>
               </li>
               <li>
-                <Link to="/properties?city=rawalpindi" className="text-muted-foreground hover:text-primary transition-colors">
-                  Properties in Rawalpindi
+                <Link to="/properties?city=pune" className="text-muted-foreground hover:text-primary transition-colors">
+                  Properties in Pune
                 </Link>
               </li>
               <li>
-                <Link to="/properties?city=faisalabad" className="text-muted-foreground hover:text-primary transition-colors">
-                  Properties in Faisalabad
+                <Link to="/properties?city=chennai" className="text-muted-foreground hover:text-primary transition-colors">
+                  Properties in Chennai
                 </Link>
               </li>
             </ul>
@@ -105,12 +105,12 @@ const Footer = () => {
                 <MapPin className="h-4 w-4 text-muted-foreground mt-0.5 flex-shrink-0" />
                 <span className="text-muted-foreground">
                   Office 123, Business Plaza<br />
-                  Main Boulevard, Lahore, Pakistan
+                  Connaught Place, New Delhi, India
                 </span>
               </li>
               <li className="flex items-center space-x-2">
                 <Phone className="h-4 w-4 text-muted-foreground flex-shrink-0" />
-                <span className="text-muted-foreground">+92 42 123 4567</span>
+                <span className="text-muted-foreground">+91 11 123 4567</span>
               </li>
               <li className="flex items-center space-x-2">
                 <Mail className="h-4 w-4 text-muted-foreground flex-shrink-0" />

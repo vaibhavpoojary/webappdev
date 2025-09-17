@@ -157,12 +157,12 @@ const Properties = () => {
                         <SelectValue placeholder="Select City" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="karachi">Karachi</SelectItem>
-                        <SelectItem value="lahore">Lahore</SelectItem>
-                        <SelectItem value="islamabad">Islamabad</SelectItem>
-                        <SelectItem value="rawalpindi">Rawalpindi</SelectItem>
-                        <SelectItem value="faisalabad">Faisalabad</SelectItem>
-                        <SelectItem value="multan">Multan</SelectItem>
+                        <SelectItem value="mumbai">Mumbai</SelectItem>
+                        <SelectItem value="delhi">Delhi</SelectItem>
+                        <SelectItem value="bangalore">Bangalore</SelectItem>
+                        <SelectItem value="pune">Pune</SelectItem>
+                        <SelectItem value="chennai">Chennai</SelectItem>
+                        <SelectItem value="hyderabad">Hyderabad</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>

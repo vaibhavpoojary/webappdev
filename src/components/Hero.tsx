@@ -41,7 +41,7 @@ const Hero = () => {
             <span className="block text-primary-light">Property</span>
           </h1>
           <p className="text-xl md:text-2xl text-white/90 max-w-2xl mx-auto">
-            Discover thousands of properties for sale and rent across Pakistan's major cities
+            Discover thousands of properties for sale and rent across India's major cities
           </p>
         </div>
 
@@ -86,12 +86,12 @@ const Hero = () => {
                     <SelectValue placeholder="Select location" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="karachi">Karachi</SelectItem>
-                    <SelectItem value="lahore">Lahore</SelectItem>
-                    <SelectItem value="islamabad">Islamabad</SelectItem>
-                    <SelectItem value="rawalpindi">Rawalpindi</SelectItem>
-                    <SelectItem value="faisalabad">Faisalabad</SelectItem>
-                    <SelectItem value="multan">Multan</SelectItem>
+                    <SelectItem value="mumbai">Mumbai</SelectItem>
+                    <SelectItem value="delhi">Delhi</SelectItem>
+                    <SelectItem value="bangalore">Bangalore</SelectItem>
+                    <SelectItem value="pune">Pune</SelectItem>
+                    <SelectItem value="chennai">Chennai</SelectItem>
+                    <SelectItem value="hyderabad">Hyderabad</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -128,15 +128,15 @@ const Hero = () => {
             <div className="mt-4 text-sm text-muted-foreground text-center">
               Popular searches: 
               <Button variant="link" className="p-0 h-auto ml-1 text-sm">
-                Houses in Lahore
+                Houses in Delhi
               </Button>
               <span className="mx-1">•</span>
               <Button variant="link" className="p-0 h-auto text-sm">
-                Apartments in Karachi
+                Apartments in Mumbai
               </Button>
               <span className="mx-1">•</span>
               <Button variant="link" className="p-0 h-auto text-sm">
-                Plots in Islamabad
+                Plots in Bangalore
               </Button>
             </div>
           </CardContent>
