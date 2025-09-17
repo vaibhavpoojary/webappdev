@@ -17,12 +17,12 @@ export interface Property {
 export const featuredProperties: Property[] = [
   {
     id: "1",
-    title: "Luxury Villa in DHA Phase 6",
-    price: "PKR 2.5 Crore",
-    location: "DHA Phase 6, Lahore",
+    title: "Luxury Villa in South Delhi",
+    price: "₹5.5 Crore",
+    location: "Greater Kailash, New Delhi",
     bedrooms: 5,
     bathrooms: 6,
-    area: "1 Kanal",
+    area: "4500 sq ft",
     type: "house",
     images: ["/placeholder.svg"],
     isNew: true,
@@ -32,37 +32,37 @@ export const featuredProperties: Property[] = [
   },
   {
     id: "2",
-    title: "Modern Apartment in Gulberg",
-    price: "PKR 85 Lac",
-    location: "Gulberg III, Lahore",
+    title: "Modern Apartment in Bandra",
+    price: "₹2.8 Crore",
+    location: "Bandra West, Mumbai",
     bedrooms: 3,
     bathrooms: 2,
     area: "1200 sq ft",
     type: "apartment",
     images: ["/placeholder.svg"],
     isFeatured: true,
-    description: "Contemporary apartment with city views and modern facilities",
+    description: "Contemporary apartment with sea views and modern facilities",
     amenities: ["Gym", "Elevator", "Parking", "24/7 Security"]
   },
   {
     id: "3",
-    title: "Commercial Plot in Blue Area",
-    price: "PKR 5 Crore",
-    location: "Blue Area, Islamabad",
+    title: "Commercial Space in Cyber City",
+    price: "₹12 Crore",
+    location: "Cyber City, Gurgaon",
     bedrooms: 0,
     bathrooms: 0,
-    area: "8 Marla",
+    area: "5000 sq ft",
     type: "commercial",
     images: ["/placeholder.svg"],
     isNew: true,
-    description: "Prime commercial plot in the heart of Islamabad's business district",
-    amenities: ["Main Road", "Corner Plot", "Utilities Available"]
+    description: "Prime commercial space in the heart of Gurgaon's IT hub",
+    amenities: ["Main Road", "Corner Plot", "Metro Connectivity"]
   },
   {
     id: "4",
-    title: "Sea View Apartment in Clifton",
-    price: "PKR 1.8 Crore",
-    location: "Clifton Block 2, Karachi",
+    title: "Sea View Apartment in Marine Drive",
+    price: "₹8.5 Crore",
+    location: "Marine Drive, Mumbai",
     bedrooms: 4,
     bathrooms: 3,
     area: "2200 sq ft",
@@ -70,27 +70,27 @@ export const featuredProperties: Property[] = [
     images: ["/placeholder.svg"],
     isFeatured: true,
     description: "Stunning sea view apartment with premium finishes",
-    amenities: ["Sea View", "Balcony", "Parking", "Generator Backup"]
+    amenities: ["Sea View", "Balcony", "Parking", "Power Backup"]
   },
   {
     id: "5",
-    title: "Residential Plot in Bahria Town",
-    price: "PKR 65 Lac",
-    location: "Bahria Town Phase 4, Rawalpindi",
-    bedrooms: 0,
-    bathrooms: 0,
-    area: "10 Marla",
-    type: "plot",
+    title: "Villa in Whitefield",
+    price: "₹1.8 Crore",
+    location: "Whitefield, Bangalore",
+    bedrooms: 4,
+    bathrooms: 3,
+    area: "3200 sq ft",
+    type: "house",
     images: ["/placeholder.svg"],
     isNew: true,
-    description: "Well-located residential plot in developed sector",
-    amenities: ["Gated Community", "Utilities", "Parks Nearby"]
+    description: "Well-designed villa in IT corridor with modern amenities",
+    amenities: ["Gated Community", "Club House", "Swimming Pool"]
   },
   {
     id: "6",
-    title: "Penthouse in F-7 Sector",
-    price: "PKR 3.2 Crore",
-    location: "F-7/3, Islamabad",
+    title: "Penthouse in Koramangala",
+    price: "₹4.2 Crore",
+    location: "Koramangala, Bangalore",
     bedrooms: 4,
     bathrooms: 4,
     area: "3500 sq ft",
@@ -104,45 +104,45 @@ export const featuredProperties: Property[] = [
 
 export const cities = [
   {
-    id: "karachi",
-    name: "Karachi",
+    id: "mumbai",
+    name: "Mumbai",
+    propertyCount: "25,000+",
+    image: "/placeholder.svg",
+    description: "Financial capital with premium properties"
+  },
+  {
+    id: "delhi",
+    name: "New Delhi",
+    propertyCount: "18,000+",
+    image: "/placeholder.svg",
+    description: "Capital city with diverse real estate"
+  },
+  {
+    id: "bangalore",
+    name: "Bangalore",
     propertyCount: "15,000+",
     image: "/placeholder.svg",
-    description: "Pakistan's largest city and commercial hub"
+    description: "IT hub with modern developments"
   },
   {
-    id: "lahore",
-    name: "Lahore",
+    id: "pune",
+    name: "Pune",
     propertyCount: "12,000+",
     image: "/placeholder.svg",
-    description: "Cultural capital with historic charm"
+    description: "Educational hub with growing market"
   },
   {
-    id: "islamabad",
-    name: "Islamabad",
-    propertyCount: "8,000+",
+    id: "chennai",
+    name: "Chennai",
+    propertyCount: "10,000+",
     image: "/placeholder.svg",
-    description: "Modern capital city with planned development"
+    description: "South India's gateway with coastal properties"
   },
   {
-    id: "rawalpindi",
-    name: "Rawalpindi",
-    propertyCount: "6,500+",
+    id: "hyderabad",
+    name: "Hyderabad",
+    propertyCount: "8,500+",
     image: "/placeholder.svg",
-    description: "Twin city with excellent connectivity"
-  },
-  {
-    id: "faisalabad",
-    name: "Faisalabad",
-    propertyCount: "4,200+",
-    image: "/placeholder.svg",
-    description: "Industrial hub with growing residential market"
-  },
-  {
-    id: "multan",
-    name: "Multan",
-    propertyCount: "3,100+",
-    image: "/placeholder.svg",
-    description: "Historic city with emerging real estate"
+    description: "Cyberabad with emerging real estate"
   }
 ];

@@ -15,11 +15,11 @@ All colors MUST be HSL.
     --background: 0 0% 100%;
     --foreground: 0 0% 9%;
     
-    /* Brand green - Primary color */
-    --primary: 135 73% 42%;
+    /* Modern blue - Primary color */
+    --primary: 217 91% 60%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 135 73% 50%;
-    --primary-dark: 135 73% 35%;
+    --primary-light: 217 91% 70%;
+    --primary-dark: 217 91% 50%;
     
     /* Card system */
     --card: 0 0% 100%;
@@ -49,18 +49,18 @@ All colors MUST be HSL.
     /* Borders and inputs */
     --border: 0 0% 90%;
     --input: 0 0% 90%;
-    --ring: 135 73% 42%;
+    --ring: 217 91% 60%;
     
     /* Property.com specific tokens */
     --property-hero-overlay: 0 0% 0% / 0.4;
     --property-card-shadow: 0 0% 0% / 0.1;
-    --property-price: 135 73% 42%;
+    --property-price: 217 91% 60%;
     --property-location: 0 0% 55%;
     --property-stats: 0 0% 35%;
     
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(135 73% 42% / 0.9), hsl(135 73% 35% / 0.95));
-    --gradient-card-hover: linear-gradient(to top, hsl(0 0% 0% / 0.1), transparent);
+    --gradient-hero: linear-gradient(135deg, hsl(217 91% 60% / 0.9), hsl(217 91% 50% / 0.95));
+    --gradient-card-hover: linear-gradient(to top, hsl(217 91% 60% / 0.1), transparent);
     
     /* Effects */
     --shadow-card: 0 2px 8px hsl(0 0% 0% / 0.1);
@@ -76,12 +76,12 @@ All colors MUST be HSL.
     /* Sidebar */
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 0 0% 15%;
-    --sidebar-primary: 135 73% 42%;
+    --sidebar-primary: 217 91% 60%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 0 0% 96%;
     --sidebar-accent-foreground: 0 0% 15%;
     --sidebar-border: 0 0% 90%;
-    --sidebar-ring: 135 73% 42%;
+    --sidebar-ring: 217 91% 60%;
   }
 
   .dark {
