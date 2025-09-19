@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { Filter, Grid, Map, SlidersHorizontal } from "lucide-react";
+import { Grid, Map, SlidersHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
@@ -11,14 +10,14 @@ import Footer from "@/components/Footer";
 import PropertyCard from "@/components/PropertyCard";
 import { featuredProperties } from "@/data/sampleProperties";
 
-const Properties = () => {
+const Rent = () => {
   const [searchParams] = useSearchParams();
   const [viewMode, setViewMode] = useState<"grid" | "map">("grid");
   const [showFilters, setShowFilters] = useState(false);
-  const [priceRange, setPriceRange] = useState([0, 10000000]);
+  const [priceRange, setPriceRange] = useState([0, 200000]);
 
-  // Get initial filters from URL params
-  const initialType = searchParams.get("type") || "buy";
+  // Filter properties for rent only
+  const rentalProperties = featuredProperties.filter(property => property.listingType === "rent");
   const initialCity = searchParams.get("city") || "";
 
   return (
@@ -29,11 +28,11 @@ const Properties = () => {
         {/* Page header */}
         <div className="mb-6">
           <h1 className="text-3xl font-bold text-foreground mb-2">
-            Properties for {initialType === "buy" ? "Sale" : "Rent"}
+            Properties for Rent
             {initialCity && ` in ${initialCity}`}
           </h1>
           <p className="text-muted-foreground">
-            {featuredProperties.length} properties found
+            {rentalProperties.length} rental properties available
           </p>
         </div>
 
@@ -68,27 +67,27 @@ const Properties = () => {
                         <SelectItem value="all">All Types</SelectItem>
                         <SelectItem value="house">House</SelectItem>
                         <SelectItem value="apartment">Apartment</SelectItem>
-                        <SelectItem value="plot">Plot</SelectItem>
-                        <SelectItem value="commercial">Commercial</SelectItem>
+                        <SelectItem value="villa">Villa</SelectItem>
+                        <SelectItem value="studio">Studio</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
 
-                  {/* Price Range */}
+                  {/* Monthly Rent Range */}
                   <div>
                     <label className="text-sm font-medium text-foreground mb-2 block">
-                      Price Range (PKR)
+                      Monthly Rent (₹)
                     </label>
                     <Slider
                       value={priceRange}
                       onValueChange={setPriceRange}
-                      max={10000000}
-                      step={100000}
+                      max={200000}
+                      step={5000}
                       className="mb-2"
                     />
                     <div className="flex justify-between text-sm text-muted-foreground">
-                      <span>{(priceRange[0] / 100000).toFixed(0)} Lac</span>
-                      <span>{(priceRange[1] / 100000).toFixed(0)} Lac</span>
+                      <span>₹{priceRange[0].toLocaleString()}</span>
+                      <span>₹{priceRange[1].toLocaleString()}</span>
                     </div>
                   </div>
 
@@ -129,20 +128,20 @@ const Properties = () => {
                     </Select>
                   </div>
 
-                  {/* Area Size */}
+                  {/* Furnishing */}
                   <div>
                     <label className="text-sm font-medium text-foreground mb-2 block">
-                      Area Size
+                      Furnishing
                     </label>
                     <Select defaultValue="all">
                       <SelectTrigger>
-                        <SelectValue placeholder="Any Size" />
+                        <SelectValue placeholder="Any" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="all">Any Size</SelectItem>
-                        <SelectItem value="small">Under 1000 sq ft</SelectItem>
-                        <SelectItem value="medium">1000 - 2000 sq ft</SelectItem>
-                        <SelectItem value="large">2000+ sq ft</SelectItem>
+                        <SelectItem value="all">Any</SelectItem>
+                        <SelectItem value="furnished">Fully Furnished</SelectItem>
+                        <SelectItem value="semi">Semi Furnished</SelectItem>
+                        <SelectItem value="unfurnished">Unfurnished</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -176,7 +175,7 @@ const Properties = () => {
           {/* Main Content */}
           <div className="flex-1">
             {/* Controls bar */}
-            <div className="flex items-center justify-between mb-6 p-4 bg-card rounded-lg border border-card-border">
+            <div className="flex items-center justify-between mb-6 p-4 bg-card rounded-lg border border-border">
               <div className="flex items-center gap-4">
                 <Button
                   variant="outline"
@@ -194,8 +193,8 @@ const Properties = () => {
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="newest">Newest First</SelectItem>
-                    <SelectItem value="price-low">Price: Low to High</SelectItem>
-                    <SelectItem value="price-high">Price: High to Low</SelectItem>
+                    <SelectItem value="price-low">Rent: Low to High</SelectItem>
+                    <SelectItem value="price-high">Rent: High to Low</SelectItem>
                     <SelectItem value="area">Area Size</SelectItem>
                   </SelectContent>
                 </Select>
@@ -222,7 +221,7 @@ const Properties = () => {
             {/* Results */}
             {viewMode === "grid" ? (
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                {featuredProperties.map((property) => (
+                {rentalProperties.map((property) => (
                   <PropertyCard
                     key={property.id}
                     id={property.id}
@@ -257,4 +256,4 @@ const Properties = () => {
   );
 };
 
-export default Properties;
+export default Rent;

@@ -7,6 +7,7 @@ export interface Property {
   bathrooms: number;
   area: string;
   type: "house" | "apartment" | "plot" | "commercial";
+  listingType: "sale" | "rent";
   images: string[];
   isNew?: boolean;
   isFeatured?: boolean;
@@ -24,6 +25,7 @@ export const featuredProperties: Property[] = [
     bathrooms: 6,
     area: "4500 sq ft",
     type: "house",
+    listingType: "sale",
     images: ["/placeholder.svg"],
     isNew: true,
     isFeatured: true,
@@ -39,6 +41,7 @@ export const featuredProperties: Property[] = [
     bathrooms: 2,
     area: "1200 sq ft",
     type: "apartment",
+    listingType: "sale",
     images: ["/placeholder.svg"],
     isFeatured: true,
     description: "Contemporary apartment with sea views and modern facilities",
@@ -53,6 +56,7 @@ export const featuredProperties: Property[] = [
     bathrooms: 0,
     area: "5000 sq ft",
     type: "commercial",
+    listingType: "sale",
     images: ["/placeholder.svg"],
     isNew: true,
     description: "Prime commercial space in the heart of Gurgaon's IT hub",
@@ -67,6 +71,7 @@ export const featuredProperties: Property[] = [
     bathrooms: 3,
     area: "2200 sq ft",
     type: "apartment",
+    listingType: "sale",
     images: ["/placeholder.svg"],
     isFeatured: true,
     description: "Stunning sea view apartment with premium finishes",
@@ -81,6 +86,7 @@ export const featuredProperties: Property[] = [
     bathrooms: 3,
     area: "3200 sq ft",
     type: "house",
+    listingType: "sale",
     images: ["/placeholder.svg"],
     isNew: true,
     description: "Well-designed villa in IT corridor with modern amenities",
@@ -95,10 +101,55 @@ export const featuredProperties: Property[] = [
     bathrooms: 4,
     area: "3500 sq ft",
     type: "apartment",
+    listingType: "sale",
     images: ["/placeholder.svg"],
     isFeatured: true,
     description: "Luxurious penthouse with panoramic city views",
     amenities: ["Rooftop Terrace", "Private Elevator", "Premium Location"]
+  },
+  {
+    id: "7",
+    title: "Spacious Apartment for Rent in Andheri",
+    price: "₹85,000/month",
+    location: "Andheri West, Mumbai",
+    bedrooms: 2,
+    bathrooms: 2,
+    area: "950 sq ft",
+    type: "apartment",
+    listingType: "rent",
+    images: ["/placeholder.svg"],
+    isFeatured: true,
+    description: "Fully furnished apartment with modern amenities",
+    amenities: ["Furnished", "Gym", "Swimming Pool", "Parking"]
+  },
+  {
+    id: "8",
+    title: "Office Space for Rent in Connaught Place",
+    price: "₹3,50,000/month",
+    location: "Connaught Place, New Delhi",
+    bedrooms: 0,
+    bathrooms: 2,
+    area: "2500 sq ft",
+    type: "commercial",
+    listingType: "rent",
+    images: ["/placeholder.svg"],
+    isNew: true,
+    description: "Prime commercial space in the heart of Delhi",
+    amenities: ["Central AC", "Elevator", "Parking", "Metro Connectivity"]
+  },
+  {
+    id: "9",
+    title: "3BHK House for Rent in Jayanagar",
+    price: "₹45,000/month",
+    location: "Jayanagar, Bangalore",
+    bedrooms: 3,
+    bathrooms: 2,
+    area: "1800 sq ft",
+    type: "house",
+    listingType: "rent",
+    images: ["/placeholder.svg"],
+    description: "Independent house with garden and parking",
+    amenities: ["Garden", "Parking", "Semi-Furnished", "Pet Friendly"]
   }
 ];
 

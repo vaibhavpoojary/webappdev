@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { Filter, Grid, Map, SlidersHorizontal } from "lucide-react";
+import { Grid, Map, SlidersHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent } from "@/components/ui/card";
 import { Slider } from "@/components/ui/slider";
@@ -11,14 +10,14 @@ import Footer from "@/components/Footer";
 import PropertyCard from "@/components/PropertyCard";
 import { featuredProperties } from "@/data/sampleProperties";
 
-const Properties = () => {
+const Buy = () => {
   const [searchParams] = useSearchParams();
   const [viewMode, setViewMode] = useState<"grid" | "map">("grid");
   const [showFilters, setShowFilters] = useState(false);
-  const [priceRange, setPriceRange] = useState([0, 10000000]);
+  const [priceRange, setPriceRange] = useState([0, 50000000]);
 
-  // Get initial filters from URL params
-  const initialType = searchParams.get("type") || "buy";
+  // Filter properties for sale only
+  const saleProperties = featuredProperties.filter(property => property.listingType === "sale");
   const initialCity = searchParams.get("city") || "";
 
   return (
@@ -29,11 +28,11 @@ const Properties = () => {
         {/* Page header */}
         <div className="mb-6">
           <h1 className="text-3xl font-bold text-foreground mb-2">
-            Properties for {initialType === "buy" ? "Sale" : "Rent"}
+            Properties for Sale
             {initialCity && ` in ${initialCity}`}
           </h1>
           <p className="text-muted-foreground">
-            {featuredProperties.length} properties found
+            {saleProperties.length} properties available for purchase
           </p>
         </div>
 
@@ -77,18 +76,18 @@ const Properties = () => {
                   {/* Price Range */}
                   <div>
                     <label className="text-sm font-medium text-foreground mb-2 block">
-                      Price Range (PKR)
+                      Price Range (₹)
                     </label>
                     <Slider
                       value={priceRange}
                       onValueChange={setPriceRange}
-                      max={10000000}
-                      step={100000}
+                      max={50000000}
+                      step={500000}
                       className="mb-2"
                     />
                     <div className="flex justify-between text-sm text-muted-foreground">
-                      <span>{(priceRange[0] / 100000).toFixed(0)} Lac</span>
-                      <span>{(priceRange[1] / 100000).toFixed(0)} Lac</span>
+                      <span>₹{(priceRange[0] / 100000).toFixed(0)} Lac</span>
+                      <span>₹{(priceRange[1] / 100000).toFixed(0)} Lac</span>
                     </div>
                   </div>
 
@@ -129,24 +128,6 @@ const Properties = () => {
                     </Select>
                   </div>
 
-                  {/* Area Size */}
-                  <div>
-                    <label className="text-sm font-medium text-foreground mb-2 block">
-                      Area Size
-                    </label>
-                    <Select defaultValue="all">
-                      <SelectTrigger>
-                        <SelectValue placeholder="Any Size" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="all">Any Size</SelectItem>
-                        <SelectItem value="small">Under 1000 sq ft</SelectItem>
-                        <SelectItem value="medium">1000 - 2000 sq ft</SelectItem>
-                        <SelectItem value="large">2000+ sq ft</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-
                   {/* City */}
                   <div>
                     <label className="text-sm font-medium text-foreground mb-2 block">
@@ -176,7 +157,7 @@ const Properties = () => {
           {/* Main Content */}
           <div className="flex-1">
             {/* Controls bar */}
-            <div className="flex items-center justify-between mb-6 p-4 bg-card rounded-lg border border-card-border">
+            <div className="flex items-center justify-between mb-6 p-4 bg-card rounded-lg border border-border">
               <div className="flex items-center gap-4">
                 <Button
                   variant="outline"
@@ -222,7 +203,7 @@ const Properties = () => {
             {/* Results */}
             {viewMode === "grid" ? (
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-                {featuredProperties.map((property) => (
+                {saleProperties.map((property) => (
                   <PropertyCard
                     key={property.id}
                     id={property.id}
@@ -257,4 +238,4 @@ const Properties = () => {
   );
 };
 
-export default Properties;
+export default Buy;

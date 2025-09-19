@@ -39,6 +39,7 @@ const FeaturedListings = () => {
                 bathrooms={property.bathrooms}
                 area={property.area}
                 type={property.type}
+                listingType={property.listingType}
                 images={property.images}
                 isNew={property.isNew}
                 isFeatured={property.isFeatured}

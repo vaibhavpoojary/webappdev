@@ -9,8 +9,8 @@ const Header = () => {
   const location = useLocation();
 
   const navigation = [
-    { name: "Buy", href: "/properties?type=buy", current: location.pathname.includes("/properties") },
-    { name: "Rent", href: "/properties?type=rent", current: false },
+    { name: "Buy", href: "/buy", current: location.pathname === "/buy" },
+    { name: "Rent", href: "/rent", current: location.pathname === "/rent" },
     { name: "Sell", href: "/sell", current: location.pathname === "/sell" },
     { name: "Agents", href: "/agents", current: location.pathname === "/agents" },
     { name: "Contact", href: "/contact", current: location.pathname === "/contact" },

@@ -13,6 +13,7 @@ interface PropertyCardProps {
   bathrooms: number;
   area: string;
   type: "house" | "apartment" | "plot" | "commercial";
+  listingType?: "sale" | "rent";
   images: string[];
   isNew?: boolean;
   isFeatured?: boolean;
@@ -28,6 +29,7 @@ const PropertyCard = ({
   bathrooms,
   area,
   type,
+  listingType,
   images,
   isNew = false,
   isFeatured = false,
