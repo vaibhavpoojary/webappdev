@@ -1,3 +1,24 @@
+// Import property images
+import villaDelhi1 from "@/assets/villa-delhi-1.jpg";
+import villaDelhi2 from "@/assets/villa-delhi-2.jpg";
+import apartmentMumbai1 from "@/assets/apartment-mumbai-1.jpg";
+import apartmentMumbai2 from "@/assets/apartment-mumbai-2.jpg";
+import commercialGurgaon1 from "@/assets/commercial-gurgaon-1.jpg";
+import seaviewMumbai1 from "@/assets/seaview-mumbai-1.jpg";
+import villaBangalore1 from "@/assets/villa-bangalore-1.jpg";
+import penthouseBangalore1 from "@/assets/penthouse-bangalore-1.jpg";
+import rentalMumbai1 from "@/assets/rental-mumbai-1.jpg";
+import officeDelhi1 from "@/assets/office-delhi-1.jpg";
+import houseBangalore1 from "@/assets/house-bangalore-1.jpg";
+
+// Import city images
+import mumbaiCity from "@/assets/mumbai-city.jpg";
+import delhiCity from "@/assets/delhi-city.jpg";
+import bangaloreCity from "@/assets/bangalore-city.jpg";
+import puneCity from "@/assets/pune-city.jpg";
+import chennaiCity from "@/assets/chennai-city.jpg";
+import hyderabadCity from "@/assets/hyderabad-city.jpg";
+
 export interface Property {
   id: string;
   title: string;
@@ -26,7 +47,7 @@ export const featuredProperties: Property[] = [
     area: "4500 sq ft",
     type: "house",
     listingType: "sale",
-    images: ["/placeholder.svg"],
+    images: [villaDelhi1, villaDelhi2],
     isNew: true,
     isFeatured: true,
     description: "Beautiful luxury villa with modern amenities and prime location",
@@ -42,7 +63,7 @@ export const featuredProperties: Property[] = [
     area: "1200 sq ft",
     type: "apartment",
     listingType: "sale",
-    images: ["/placeholder.svg"],
+    images: [apartmentMumbai1, apartmentMumbai2],
     isFeatured: true,
     description: "Contemporary apartment with sea views and modern facilities",
     amenities: ["Gym", "Elevator", "Parking", "24/7 Security"]
@@ -57,7 +78,7 @@ export const featuredProperties: Property[] = [
     area: "5000 sq ft",
     type: "commercial",
     listingType: "sale",
-    images: ["/placeholder.svg"],
+    images: [commercialGurgaon1],
     isNew: true,
     description: "Prime commercial space in the heart of Gurgaon's IT hub",
     amenities: ["Main Road", "Corner Plot", "Metro Connectivity"]
@@ -72,7 +93,7 @@ export const featuredProperties: Property[] = [
     area: "2200 sq ft",
     type: "apartment",
     listingType: "sale",
-    images: ["/placeholder.svg"],
+    images: [seaviewMumbai1, apartmentMumbai2],
     isFeatured: true,
     description: "Stunning sea view apartment with premium finishes",
     amenities: ["Sea View", "Balcony", "Parking", "Power Backup"]
@@ -87,7 +108,7 @@ export const featuredProperties: Property[] = [
     area: "3200 sq ft",
     type: "house",
     listingType: "sale",
-    images: ["/placeholder.svg"],
+    images: [villaBangalore1, villaDelhi2],
     isNew: true,
     description: "Well-designed villa in IT corridor with modern amenities",
     amenities: ["Gated Community", "Club House", "Swimming Pool"]
@@ -102,7 +123,7 @@ export const featuredProperties: Property[] = [
     area: "3500 sq ft",
     type: "apartment",
     listingType: "sale",
-    images: ["/placeholder.svg"],
+    images: [penthouseBangalore1, apartmentMumbai1],
     isFeatured: true,
     description: "Luxurious penthouse with panoramic city views",
     amenities: ["Rooftop Terrace", "Private Elevator", "Premium Location"]
@@ -117,7 +138,7 @@ export const featuredProperties: Property[] = [
     area: "950 sq ft",
     type: "apartment",
     listingType: "rent",
-    images: ["/placeholder.svg"],
+    images: [rentalMumbai1, apartmentMumbai2],
     isFeatured: true,
     description: "Fully furnished apartment with modern amenities",
     amenities: ["Furnished", "Gym", "Swimming Pool", "Parking"]
@@ -132,7 +153,7 @@ export const featuredProperties: Property[] = [
     area: "2500 sq ft",
     type: "commercial",
     listingType: "rent",
-    images: ["/placeholder.svg"],
+    images: [officeDelhi1, commercialGurgaon1],
     isNew: true,
     description: "Prime commercial space in the heart of Delhi",
     amenities: ["Central AC", "Elevator", "Parking", "Metro Connectivity"]
@@ -147,7 +168,7 @@ export const featuredProperties: Property[] = [
     area: "1800 sq ft",
     type: "house",
     listingType: "rent",
-    images: ["/placeholder.svg"],
+    images: [houseBangalore1, villaBangalore1],
     description: "Independent house with garden and parking",
     amenities: ["Garden", "Parking", "Semi-Furnished", "Pet Friendly"]
   }
@@ -158,42 +179,42 @@ export const cities = [
     id: "mumbai",
     name: "Mumbai",
     propertyCount: "25,000+",
-    image: "/placeholder.svg",
+    image: mumbaiCity,
     description: "Financial capital with premium properties"
   },
   {
     id: "delhi",
     name: "New Delhi",
     propertyCount: "18,000+",
-    image: "/placeholder.svg",
+    image: delhiCity,
     description: "Capital city with diverse real estate"
   },
   {
     id: "bangalore",
     name: "Bangalore",
     propertyCount: "15,000+",
-    image: "/placeholder.svg",
+    image: bangaloreCity,
     description: "IT hub with modern developments"
   },
   {
     id: "pune",
     name: "Pune",
     propertyCount: "12,000+",
-    image: "/placeholder.svg",
+    image: puneCity,
     description: "Educational hub with growing market"
   },
   {
     id: "chennai",
     name: "Chennai",
     propertyCount: "10,000+",
-    image: "/placeholder.svg",
+    image: chennaiCity,
     description: "South India's gateway with coastal properties"
   },
   {
     id: "hyderabad",
     name: "Hyderabad",
     propertyCount: "8,500+",
-    image: "/placeholder.svg",
+    image: hyderabadCity,
     description: "Cyberabad with emerging real estate"
   }
 ];
