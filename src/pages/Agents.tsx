@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Search, MapPin, Phone, Mail, Star, Filter } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import { Search, MapPin, Phone, Mail, Star, Filter, Send, Bot, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -22,6 +22,13 @@ interface Agent {
   properties: number;
   description: string;
   isVerified: boolean;
+}
+
+interface ChatMessage {
+  id: string;
+  type: 'user' | 'ai';
+  content: string;
+  timestamp: Date;
 }
 
 const agents: Agent[] = [
@@ -122,6 +129,81 @@ const Agents = () => {
   const [selectedCity, setSelectedCity] = useState("all");
   const [selectedSpecialization, setSelectedSpecialization] = useState("all");
   const [sortBy, setSortBy] = useState("rating");
+  
+  // Chat state
+  const [chatMessages, setChatMessages] = useState<ChatMessage[]>([
+    {
+      id: "1",
+      type: "ai",
+      content: "Hello! I'm your AI Property Assistant. I can help you with property inquiries, market insights, pricing information, and connect you with the right agents. How can I assist you today?",
+      timestamp: new Date()
+    }
+  ]);
+  const [currentMessage, setCurrentMessage] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
+  const chatEndRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [chatMessages]);
+
+  const handleSendMessage = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!currentMessage.trim()) return;
+
+    const userMessage: ChatMessage = {
+      id: Date.now().toString(),
+      type: "user",
+      content: currentMessage,
+      timestamp: new Date()
+    };
+
+    setChatMessages(prev => [...prev, userMessage]);
+    setCurrentMessage("");
+    setIsTyping(true);
+
+    // Simulate AI response
+    setTimeout(() => {
+      const aiResponse: ChatMessage = {
+        id: (Date.now() + 1).toString(),
+        type: "ai",
+        content: getAIResponse(currentMessage),
+        timestamp: new Date()
+      };
+      setChatMessages(prev => [...prev, aiResponse]);
+      setIsTyping(false);
+    }, 1500);
+  };
+
+  const getAIResponse = (message: string): string => {
+    const lowerMessage = message.toLowerCase();
+    
+    if (lowerMessage.includes("price") || lowerMessage.includes("cost") || lowerMessage.includes("budget")) {
+      return "Property prices vary significantly based on location, size, and amenities. In major cities like Mumbai, prices range from ₹50 lakhs to ₹5+ crores. Delhi and Bangalore follow similar patterns. Would you like specific information about a particular area or property type?";
+    }
+    
+    if (lowerMessage.includes("location") || lowerMessage.includes("area") || lowerMessage.includes("where")) {
+      return "I can help you explore properties across India's major cities including Mumbai, Delhi, Bangalore, Pune, Chennai, and Hyderabad. Each city offers unique advantages - IT hubs in Bangalore, financial district in Mumbai, or cultural richness in Delhi. Which location interests you most?";
+    }
+    
+    if (lowerMessage.includes("agent") || lowerMessage.includes("contact")) {
+      return "I can connect you with our verified real estate agents who specialize in different property types and locations. You can see all available agents below this chat. Would you like me to recommend agents based on your specific requirements?";
+    }
+    
+    if (lowerMessage.includes("buy") || lowerMessage.includes("purchase")) {
+      return "Great! I can help you with the buying process. First, let's understand your requirements: What's your budget range? Which city or area are you considering? Are you looking for residential or commercial property? This will help me guide you better.";
+    }
+    
+    if (lowerMessage.includes("rent") || lowerMessage.includes("rental")) {
+      return "For rental properties, we have options across all major cities. Monthly rents typically range from ₹15,000 to ₹2+ lakhs depending on location and amenities. Are you looking for furnished or unfurnished? What's your preferred location and budget range?";
+    }
+    
+    if (lowerMessage.includes("sell") || lowerMessage.includes("selling")) {
+      return "I can help you sell your property! To get started, I'll need some details: Property type, location, current condition, and any special features. Our agents can provide a market evaluation and create a selling strategy. Would you like to connect with a selling specialist?";
+    }
+    
+    return "Thank you for your question! I can assist with property searches, pricing information, market insights, and connecting you with the right agents. Could you please provide more specific details about what you're looking for? For example, are you interested in buying, renting, or selling a property?";
+  };
 
   const filteredAgents = agents
     .filter(agent => {
@@ -152,7 +234,99 @@ const Agents = () => {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Page Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-foreground mb-2">Find Real Estate Agents</h1>
+          <h1 className="text-3xl font-bold text-foreground mb-2">AI Property Assistant & Real Estate Agents</h1>
+          <p className="text-muted-foreground">
+            Chat with our AI assistant for instant property help, then connect with verified real estate professionals
+          </p>
+        </div>
+
+        {/* AI Chat Assistant */}
+        <div className="mb-12">
+          <Card className="border-primary/20">
+            <div className="bg-primary/5 p-4 border-b">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                  <Bot className="h-5 w-5 text-primary-foreground" />
+                </div>
+                <div>
+                  <h2 className="text-lg font-semibold text-foreground">AI Property Assistant</h2>
+                  <p className="text-sm text-muted-foreground">Get instant answers about properties, pricing, and locations</p>
+                </div>
+              </div>
+            </div>
+            
+            <CardContent className="p-0">
+              {/* Chat Messages */}
+              <div className="h-96 overflow-y-auto p-4 space-y-4">
+                {chatMessages.map((message) => (
+                  <div
+                    key={message.id}
+                    className={`flex gap-3 ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
+                  >
+                    {message.type === 'ai' && (
+                      <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+                        <Bot className="h-4 w-4 text-primary-foreground" />
+                      </div>
+                    )}
+                    <div
+                      className={`max-w-[70%] p-3 rounded-lg ${
+                        message.type === 'user'
+                          ? 'bg-primary text-primary-foreground ml-auto'
+                          : 'bg-muted text-foreground'
+                      }`}
+                    >
+                      <p className="text-sm">{message.content}</p>
+                      <span className="text-xs opacity-70 mt-1 block">
+                        {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                      </span>
+                    </div>
+                    {message.type === 'user' && (
+                      <div className="w-8 h-8 bg-muted rounded-full flex items-center justify-center flex-shrink-0">
+                        <User className="h-4 w-4 text-muted-foreground" />
+                      </div>
+                    )}
+                  </div>
+                ))}
+                
+                {isTyping && (
+                  <div className="flex gap-3 justify-start">
+                    <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+                      <Bot className="h-4 w-4 text-primary-foreground" />
+                    </div>
+                    <div className="bg-muted text-foreground p-3 rounded-lg">
+                      <div className="flex space-x-1">
+                        <div className="w-2 h-2 bg-current rounded-full animate-bounce"></div>
+                        <div className="w-2 h-2 bg-current rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                        <div className="w-2 h-2 bg-current rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+                <div ref={chatEndRef} />
+              </div>
+              
+              {/* Chat Input */}
+              <div className="border-t p-4">
+                <form onSubmit={handleSendMessage} className="flex gap-2">
+                  <Input
+                    value={currentMessage}
+                    onChange={(e) => setCurrentMessage(e.target.value)}
+                    placeholder="Ask about properties, prices, locations, or agents..."
+                    className="flex-1"
+                    disabled={isTyping}
+                  />
+                  <Button type="submit" disabled={isTyping || !currentMessage.trim()}>
+                    <Send className="h-4 w-4" />
+                  </Button>
+                </form>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Real Estate Agents Section */}
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold text-foreground mb-2">Our Expert Agents</h2>
           <p className="text-muted-foreground">
             Connect with verified real estate professionals in your area
           </p>
