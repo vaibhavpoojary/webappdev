@@ -37,7 +37,7 @@ const CallToAction = () => {
           </h2>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
             Join thousands of successful sellers on Property.com. List your property today 
-            and connect with serious buyers across Pakistan.
+            and connect with serious buyers across India.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

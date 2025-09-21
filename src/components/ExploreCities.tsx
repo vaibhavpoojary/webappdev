@@ -14,7 +14,7 @@ const ExploreCities = () => {
             Explore Properties by City
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Discover amazing properties in Pakistan's major cities. From bustling metropolises 
+            Discover amazing properties in India's major cities. From bustling metropolises 
             to peaceful residential areas, find your perfect home.
           </p>
         </div>
