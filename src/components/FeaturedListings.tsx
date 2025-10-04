@@ -29,22 +29,21 @@ const FeaturedListings = () => {
         {/* Properties grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {featuredProperties.slice(0, 6).map((property) => (
-            <Link key={property.id} to={`/property/${property.id}`}>
-              <PropertyCard
-                id={property.id}
-                title={property.title}
-                price={property.price}
-                location={property.location}
-                bedrooms={property.bedrooms}
-                bathrooms={property.bathrooms}
-                area={property.area}
-                type={property.type}
-                listingType={property.listingType}
-                images={property.images}
-                isNew={property.isNew}
-                isFeatured={property.isFeatured}
-              />
-            </Link>
+            <PropertyCard
+              key={property.id}
+              id={property.id}
+              title={property.title}
+              price={property.price}
+              location={property.location}
+              bedrooms={property.bedrooms}
+              bathrooms={property.bathrooms}
+              area={property.area}
+              type={property.type}
+              listingType={property.listingType}
+              images={property.images}
+              isNew={property.isNew}
+              isFeatured={property.isFeatured}
+            />
           ))}
         </div>
 

@@ -28,24 +28,25 @@ const PropertyDetail = () => {
     "24/7 Security": Shield,
     "Sea View": MapPin,
     "Balcony": Trees,
-    "Generator Backup": Shield,
+    "Power Backup": Shield,
     "Gated Community": Shield,
-    "Utilities": Wifi,
-    "Parks Nearby": Trees,
+    "Club House": Trees,
     "Main Road": MapPin,
     "Corner Plot": MapPin,
-    "Utilities Available": Wifi,
+    "Metro Connectivity": Wifi,
     "Rooftop Terrace": Trees,
     "Private Elevator": Maximize,
-    "Premium Location": MapPin
+    "Premium Location": MapPin,
+    "Furnished": Shield,
+    "Central AC": Shield,
+    "Semi-Furnished": Shield,
+    "Pet Friendly": Trees
   };
 
-  const mockImages = [
-    "/placeholder.svg",
-    "/placeholder.svg", 
-    "/placeholder.svg",
-    "/placeholder.svg"
-  ];
+  // Use actual property images
+  const displayImages = property.images && property.images.length > 0 
+    ? property.images 
+    : ["/placeholder.svg"];
 
   return (
     <div className="min-h-screen bg-background">
@@ -68,15 +69,15 @@ const PropertyDetail = () => {
               <CardContent className="p-0">
                 <div className="relative aspect-[16/10] overflow-hidden rounded-lg">
                   <img
-                    src={mockImages[currentImageIndex]}
+                    src={displayImages[currentImageIndex]}
                     alt={property.title}
                     className="w-full h-full object-cover"
                   />
                   
                   {/* Navigation dots */}
-                  {mockImages.length > 1 && (
+                  {displayImages.length > 1 && (
                     <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                      {mockImages.map((_, index) => (
+                      {displayImages.map((_, index) => (
                         <button
                           key={index}
                           onClick={() => setCurrentImageIndex(index)}
@@ -90,9 +91,9 @@ const PropertyDetail = () => {
                 </div>
                 
                 {/* Thumbnail strip */}
-                {mockImages.length > 1 && (
+                {displayImages.length > 1 && (
                   <div className="flex gap-2 p-4 overflow-x-auto">
-                    {mockImages.map((image, index) => (
+                    {displayImages.map((image, index) => (
                       <button
                         key={index}
                         onClick={() => setCurrentImageIndex(index)}
@@ -254,21 +255,20 @@ const PropertyDetail = () => {
           <h2 className="text-2xl font-bold text-foreground mb-6">Similar Properties</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredProperties.slice(0, 3).map((similarProperty) => (
-              <Link key={similarProperty.id} to={`/property/${similarProperty.id}`}>
-                <PropertyCard
-                  id={similarProperty.id}
-                  title={similarProperty.title}
-                  price={similarProperty.price}
-                  location={similarProperty.location}
-                  bedrooms={similarProperty.bedrooms}
-                  bathrooms={similarProperty.bathrooms}
-                  area={similarProperty.area}
-                  type={similarProperty.type}
-                  images={similarProperty.images}
-                  isNew={similarProperty.isNew}
-                  isFeatured={similarProperty.isFeatured}
-                />
-              </Link>
+              <PropertyCard
+                key={similarProperty.id}
+                id={similarProperty.id}
+                title={similarProperty.title}
+                price={similarProperty.price}
+                location={similarProperty.location}
+                bedrooms={similarProperty.bedrooms}
+                bathrooms={similarProperty.bathrooms}
+                area={similarProperty.area}
+                type={similarProperty.type}
+                images={similarProperty.images}
+                isNew={similarProperty.isNew}
+                isFeatured={similarProperty.isFeatured}
+              />
             ))}
           </div>
         </section>

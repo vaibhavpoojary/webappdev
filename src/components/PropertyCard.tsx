@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import { Link } from "react-router-dom";
 
 interface PropertyCardProps {
   id: string;
@@ -36,12 +37,13 @@ const PropertyCard = ({
   className
 }: PropertyCardProps) => {
   return (
-    <Card className={cn(
-      "group cursor-pointer transition-all duration-300 hover:shadow-card-hover border-card-border",
-      isFeatured && "ring-2 ring-primary/20",
-      className
-    )}>
-      <CardContent className="p-0">
+    <Link to={`/property/${id}`}>
+      <Card className={cn(
+        "group cursor-pointer transition-all duration-300 hover:shadow-card-hover border-card-border",
+        isFeatured && "ring-2 ring-primary/20",
+        className
+      )}>
+        <CardContent className="p-0">
         {/* Image Container */}
         <div className="relative overflow-hidden rounded-t-lg aspect-[4/3]">
           <img
@@ -134,6 +136,7 @@ const PropertyCard = ({
         </div>
       </CardContent>
     </Card>
+    </Link>
   );
 };
 
